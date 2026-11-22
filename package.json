@@ -1,0 +1,10 @@
+{
+  "name": "dawn-relay-switchyard",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "node serve.mjs",
+    "test": "node --test test/*.test.mjs"
+  }
+}

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111a18">
+  <meta name="description" content="A fast local booth game about keeping three city circuits alive.">
+  <title>Dawn Relay: Switchyard</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="game.mjs"></script>
+</head>
+<body>
+  <main class="arcade">
+    <header class="marquee">
+      <div>
+        <p class="series">Dawn Relay</p>
+        <h1>Switchyard</h1>
+        <p class="tagline">Bring three districts online before sunrise.</p>
+      </div>
+      <div class="city" aria-hidden="true">
+        <div class="sun"></div>
+        <div class="buildings">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </header>
+
+    <div class="machine">
+      <section class="board-panel" aria-labelledby="circuit-title">
+        <div class="board-header">
+          <div>
+            <p class="field-label" id="circuit-caption">Circuit 1 of 3</p>
+            <h2 id="circuit-title">Glasshouses</h2>
+          </div>
+          <div class="direction" id="direction" aria-hidden="true">→ ↓</div>
+        </div>
+        <p class="rule" id="rule">A pulse flips this tower and its east and south neighbours.</p>
+        <div class="board" id="board" role="group" aria-label="Circuit board" aria-describedby="rule"></div>
+        <div class="board-footer">
+          <span><i class="lamp lamp--on" aria-hidden="true"></i> On</span>
+          <span><i class="lamp" aria-hidden="true"></i> Off</span>
+          <span class="keyboard-note">Arrow keys to move · Enter or Space to pulse</span>
+        </div>
+      </section>
+
+      <section class="desk" aria-label="Relay controls">
+        <div class="telemetry">
+          <div><p class="field-label">Time left</p><p class="timer" id="timer">75</p></div>
+          <div><p class="field-label">Pulses</p><p class="counter" id="moves">0</p></div>
+          <div><p class="field-label">Online</p><p class="counter" id="online">0/3</p></div>
+        </div>
+        <div class="meter" aria-hidden="true"><div id="meter-fill"></div></div>
+        <ol class="route" id="route" aria-label="District progress"></ol>
+
+        <fieldset class="mode-select" id="mode-select">
+          <legend>Choose a run</legend>
+          <label><input type="radio" name="mode" value="solo" checked><span>Solo</span></label>
+          <label><input type="radio" name="mode" value="pair"><span>Two players</span></label>
+          <label><input type="radio" name="mode" value="practice"><span>Practice</span></label>
+        </fieldset>
+
+        <div id="message" class="message" role="status" aria-atomic="true">Light all 16 towers in a circuit to move on.</div>
+        <div class="actions">
+          <button id="primary" class="primary" type="button">Start relay</button>
+          <button id="hint" class="secondary" type="button" hidden>Show hint</button>
+          <button id="reset" class="secondary" type="button" hidden>Restart</button>
+        </div>
+        <p id="best" class="best" hidden></p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
